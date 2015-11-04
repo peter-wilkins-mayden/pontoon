@@ -1,7 +1,15 @@
 <?php
 
+/**
+ * Class Pontoon
+ */
 class Pontoon
 {
+
+    /**
+     * @param $hand
+     * @return int
+     */
     public function scoreHand($hand)
     {
         $total = 0;
@@ -20,8 +28,6 @@ class Pontoon
                     $total += $card['name'];
             }
         }
-       // echo "\n total = " . $total;
-       // echo "\n ace = " . $ace;
         if ($ace > 1) {
             $total += $ace;
         } elseif ($ace == 1) {
@@ -34,7 +40,12 @@ class Pontoon
         return $total;
     }
 
-    public function dealCards(&$fullDeck, $num)
+    /**
+     * @param $fullDeck
+     * @param $num
+     * @return array
+     */
+    public function dealCards(&$fullDeck, $num = 1)
     {
         while ($num > 0) {
             $hand[] = array_pop($fullDeck);
@@ -45,11 +56,9 @@ class Pontoon
         return $hand;
     }
 
-    public function popCard(&$fullDeck)
-    {
-        return array_pop($fullDeck);
-    }
-
+    /**
+     * @return array
+     */
     public function newShuffledDeck()
     {
         $suitee = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'jack', 'queen', 'king', 'ace'];

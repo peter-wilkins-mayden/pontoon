@@ -85,14 +85,6 @@ class PontoonTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(52, count($deck));
     }
 
-    public function test_popCard_returns_an_array_with_two_elements()
-    {
-        $a = new Pontoon;
-        $deck = $a->newShuffledDeck();
-        $card = $a->popCard($deck);
-        $this->assertEquals(2, count($card));
-    }
-
     public function test_dealCards_returns_number_of_cards_in_argument()
     {
         $a = new Pontoon;
