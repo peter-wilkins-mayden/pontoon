@@ -7,12 +7,13 @@ class Pontoon
 {
 
     /**
+     * Given a hand, returns an array of all possible combinations of scores of 21 or below
      * @param $hand
-     * @return int
+     * @return array
      */
     public function scoreHand($hand)
     {
-        $total = 0;
+        $total[0] = 0;
         $ace = 0;
         foreach ($hand as $card) {
             switch ($card['name']) {
@@ -22,42 +23,54 @@ class Pontoon
                 case 'king':
                 case 'queen':
                 case 'jack':
-                    $total += 10;
+                    $total[0] += 10;
                     break;
                 default:
-                    $total += $card['name'];
+                    $total[0] += $card['name'];
             }
         }
-        if ($ace > 1) {
-            $total += $ace;
-        } elseif ($ace == 1) {
-            if ($total <= 10) {
-                $total += 11;
-            } else {
-                $total += 1;
-            }
+        echo "\n total: " . $total[0];
+        echo "\n ace: " . $ace . "\n";
+
+        while ($ace > 0) {
+           $var = $total[0];
+           if($var + 11 <= 21){
+               $total[] = $var + 11;
+           }
+            $total[0] += 1;
+
+            $ace -= 1;
         }
+
+//    elseif ($ace == 1) {
+//            if ($total <= 10) {
+//                $total += 11;
+//            } else {
+//                $total += 1;
+//            }
+//        }
+        //var_dump($total);
         return $total;
     }
 
     /**
      * @param $fullDeck
      * @param $num
-     * @return array
+     * @return array of card arrays
      */
     public function dealCards(&$fullDeck, $num = 1)
     {
         while ($num > 0) {
             $hand[] = array_pop($fullDeck);
-            $num --;
+            $num -= 1;
         }
 
-        var_dump($hand);
+        //var_dump($hand);
         return $hand;
     }
 
     /**
-     * @return array
+     * @return array consisting of 52 shuffled card arrays
      */
     public function newShuffledDeck()
     {

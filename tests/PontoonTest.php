@@ -9,7 +9,7 @@ class PontoonTest extends PHPUnit_Framework_TestCase
      *
      * @dataProvider handProvider
      */
-    public function testDoubles($hand, $expectedResult)
+    public function testHands($hand, $expectedResult)
     {
         $a = new Pontoon;
         $this->assertEquals($expectedResult, $a->scoreHand($hand));
@@ -23,21 +23,21 @@ class PontoonTest extends PHPUnit_Framework_TestCase
                     ['suit' => "diamonds", 'name' => "2"],
                     ['suit' => "spades", 'name' => "ace"],
                 ],
-                13,
+                [3, 13,],
             ],
             [
                 [
                     ['suit' => "diamonds", 'name' => "ace"],
                     ['suit' => "spades", 'name' => "ace"],
                 ],
-                2,
+                [2, 12,],
             ],
             [
                 [
                     ['suit' => "diamonds", 'name' => "king"],
                     ['suit' => "spades", 'name' => "ace"],
                 ],
-                21,
+                [11, 21,],
             ],
             [
                 [
@@ -47,7 +47,7 @@ class PontoonTest extends PHPUnit_Framework_TestCase
                     ['suit' => "spades", 'name' => "ace"],
                     ['suit' => "spades", 'name' => "ace"],
                 ],
-                6,
+                [6, 17,],
             ],
             [
                 [
@@ -57,7 +57,7 @@ class PontoonTest extends PHPUnit_Framework_TestCase
                     ['suit' => "spades", 'name' => "5"],
                     ['suit' => "spades", 'name' => "ace"],
                 ],
-                21,
+                [21,],
             ],
             [
                 [
@@ -65,7 +65,7 @@ class PontoonTest extends PHPUnit_Framework_TestCase
                     ['suit' => "spades", 'name' => "ace"],
                     ['suit' => "spades", 'name' => "ace"],
                 ],
-                21,
+                [11, 21,],
             ],
             [
                 [
@@ -73,7 +73,7 @@ class PontoonTest extends PHPUnit_Framework_TestCase
                     ['suit' => "spades", 'name' => "ace"],
                     ['suit' => "spades", 'name' => "ace"],
                 ],
-                19,
+                [10, 20,],
             ],
         ];
     }
@@ -93,21 +93,12 @@ class PontoonTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(2, count($hand));
     }
 
-    public function test_dealCards_removes_from_deck_number_of_cards_in_argument()
+    public function test_dealCards_removes_from_deck_number_of_cards_dealt()
     {
         $a = new Pontoon;
         $deck = $a->newShuffledDeck();
-        $hand = $a->dealCards($deck, 2);
-        $this->assertEquals(2, count($hand));
+        $a->dealCards($deck, 10);
+        $this->assertEquals(42, count($deck));
     }
 
-    public function test_scoreHand_returns_sum_of_value_of_cards_in_hand()
-    {
-        $a = new Pontoon;
-        $hand = [
-            ['suit' => "diamonds", 'name' => "2"],
-            ['suit' => "spades", 'name' => "ace"],
-        ];
-        $this->assertEquals(13, $a->scoreHand($hand));
-    }
 }
