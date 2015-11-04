@@ -3,7 +3,6 @@
 
 class PontoonTest extends PHPUnit_Framework_TestCase
 {
-
     /**
      * @param $hand
      * @param $expectedResult
@@ -79,14 +78,14 @@ class PontoonTest extends PHPUnit_Framework_TestCase
         ];
     }
 
-    function test_create_a_new_pack_of_shuffled_cards()
+    public function test_create_a_new_pack_of_shuffled_cards()
     {
         $a = new Pontoon;
         $deck = $a->newShuffledDeck();
         $this->assertEquals(52, count($deck));
     }
 
-    function test_popCard_returns_an_array_with_two_elements()
+    public function test_popCard_returns_an_array_with_two_elements()
     {
         $a = new Pontoon;
         $deck = $a->newShuffledDeck();
@@ -94,25 +93,23 @@ class PontoonTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(2, count($card));
     }
 
-    function test_dealCards_returns_number_of_cards_in_argument()
+    public function test_dealCards_returns_number_of_cards_in_argument()
     {
         $a = new Pontoon;
         $deck = $a->newShuffledDeck();
         $hand = $a->dealCards($deck, 2);
         $this->assertEquals(2, count($hand));
-
     }
 
-    function test_dealCards_removes_from_deck_number_of_cards_in_argument()
+    public function test_dealCards_removes_from_deck_number_of_cards_in_argument()
     {
         $a = new Pontoon;
         $deck = $a->newShuffledDeck();
         $hand = $a->dealCards($deck, 2);
         $this->assertEquals(2, count($hand));
-
     }
 
-    function test_scoreHand_returns_sum_of_value_of_cards_in_hand()
+    public function test_scoreHand_returns_sum_of_value_of_cards_in_hand()
     {
         $a = new Pontoon;
         $hand = [
@@ -121,5 +118,4 @@ class PontoonTest extends PHPUnit_Framework_TestCase
         ];
         $this->assertEquals(13, $a->scoreHand($hand));
     }
-
 }

@@ -2,8 +2,7 @@
 
 class Pontoon
 {
-
-    function scoreHand($hand)
+    public function scoreHand($hand)
     {
         $total = 0;
         $ace = 0;
@@ -23,21 +22,19 @@ class Pontoon
         }
        // echo "\n total = " . $total;
        // echo "\n ace = " . $ace;
-        if($ace > 1){
+        if ($ace > 1) {
             $total += $ace;
-        }
-        elseif($ace == 1){
-            if($total <= 10){
+        } elseif ($ace == 1) {
+            if ($total <= 10) {
                 $total += 11;
-            }
-            else{
+            } else {
                 $total += 1;
             }
         }
         return $total;
     }
 
-    function dealCards(&$fullDeck, $num)
+    public function dealCards(&$fullDeck, $num)
     {
         while ($num > 0) {
             $hand[] = array_pop($fullDeck);
@@ -48,12 +45,12 @@ class Pontoon
         return $hand;
     }
 
-    function popCard(&$fullDeck)
+    public function popCard(&$fullDeck)
     {
         return array_pop($fullDeck);
     }
 
-    function newShuffledDeck()
+    public function newShuffledDeck()
     {
         $suitee = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'jack', 'queen', 'king', 'ace'];
         $deck = [
@@ -75,6 +72,4 @@ class Pontoon
 
         return $fullDeck;
     }
-
 }
-
