@@ -18,7 +18,7 @@ class Pontoon
         foreach ($hand as $card) {
             switch ($card['name']) {
                 case 'ace':
-                    $ace++;
+                    $ace ++;
                     break;
                 case 'king':
                 case 'queen':
@@ -31,13 +31,14 @@ class Pontoon
         }
         echo "\n total: " . $total[0];
         echo "\n ace: " . $ace . "\n";
-
+        $total[0] += $ace;
+        $var = $total[0];
         while ($ace > 0) {
-           $var = $total[0];
-           if($var + 11 <= 21){
-               $total[] = $var + 11;
-           }
-            $total[0] += 1;
+
+             $var += 10;
+            if ($var <= 21) {
+                $total[] = $total[0] + 10;
+            }
 
             $ace -= 1;
         }
@@ -95,3 +96,15 @@ class Pontoon
         return $fullDeck;
     }
 }
+
+    $hand = [
+        ['suit' => "diamonds", 'name' => "2"],
+        ['suit' => "spades", 'name' => "ace"],
+        ['suit' => "spades", 'name' => "ace"],
+        ['suit' => "spades", 'name' => "ace"],
+        ['suit' => "spades", 'name' => "ace"],
+        ];
+$a = new Pontoon();
+$result = $a->scoreHand($hand);
+var_dump($result);
+

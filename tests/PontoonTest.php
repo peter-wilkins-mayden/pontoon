@@ -47,7 +47,7 @@ class PontoonTest extends PHPUnit_Framework_TestCase
                     ['suit' => "spades", 'name' => "ace"],
                     ['suit' => "spades", 'name' => "ace"],
                 ],
-                [6, 17,],
+                [6, 16,],
             ],
             [
                 [
