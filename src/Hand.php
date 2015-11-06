@@ -1,21 +1,25 @@
 <?php
 
 /**
- * Class Pontoon
+ * Project: Pontoon
+ * User: peterwilkins
+ * Date: 06/11/2015
+ * Time: 14:37
  */
-class Pontoon
+class Hand
 {
+    public $cards;
 
-    /**
-     * Given a hand, returns an array of all possible combinations of scores of 21 or below
-     * @param $hand
-     * @return array
-     */
-    public function scoreHand($hand)
+    public function __construct($cards)
+    {
+        $this->cards = $cards;
+    }
+
+    public function scoreHand()
     {
         $total[0] = 0;
         $ace = 0;
-        foreach ($hand as $card) {
+        foreach ($this->cards as $card) {
             switch ($card['name']) {
                 case 'ace':
                     $ace ++;
@@ -35,7 +39,7 @@ class Pontoon
         $var = $total[0];
         while ($ace > 0) {
 
-             $var += 10;
+            $var += 10;
             if ($var <= 21) {
                 $total[] = $total[0] + 10;
             }
@@ -53,25 +57,8 @@ class Pontoon
         //var_dump($total);
         return $total;
     }
-
-    /**
-     * @param $fullDeck
-     * @param $num
-     * @return array of card arrays
-     */
-    public function dealCards(&$fullDeck, $num = 1)
-    {
-        while ($num > 0) {
-            $hand[] = array_pop($fullDeck);
-            $num -= 1;
-        }
-
-        //var_dump($hand);
-        return $hand;
+    public function count(){
+        return count($this->cards);
     }
 
-
 }
-
-
-

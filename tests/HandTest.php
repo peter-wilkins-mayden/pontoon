@@ -14,9 +14,10 @@ class HandTest extends PHPUnit_Framework_TestCase
      *
      * @dataProvider handProvider
      */
-    public function testHands($hand, $expectedResult)
+    public function test_scoreHand($hand, $expectedResult)
     {
-        $this->assertEquals($expectedResult, $a->scoreHand($hand));
+        $a = new Hand($hand);
+        $this->assertEquals($expectedResult, $a->scoreHand());
     }
 
     public static function handProvider()
@@ -80,16 +81,6 @@ class HandTest extends PHPUnit_Framework_TestCase
                 [10, 20,],
             ],
         ];
-    }
-
-
-
-    public function test_dealCards_returns_number_of_cards_in_argument()
-    {
-        $game = new Game();
-        $hand = new Hand();
-        $hand->dealCards($game->deck, 2);
-        $this->assertEquals(2, count($hand));
     }
 
 }

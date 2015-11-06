@@ -8,17 +8,11 @@
  */
 class GameTest extends PHPUnit_Framework_TestCase
 {
-    public function test_create_a_new_pack_of_shuffled_cards()
+    public function test_game_deck_is_Deck()
     {
         $a = new Game();
-        $this->assertEquals(52, count($a->deck));
+        $this->assertTrue(is_a($a->deck, 'Deck'));
     }
-    public function test_dealCards_removes_from_deck_number_of_cards_dealt()
-    {
-        $a = new Game();
-        $b = new Hand();
-        $b->dealCards($a->deck, 10);
-        $this->assertEquals(42, count($a->deck));
-    }
+
 }
 

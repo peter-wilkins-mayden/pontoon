@@ -1,7 +1,7 @@
 <?php
-require_once('src/Pontoon.php');
+require_once('src/Game.php');
 
-$a = new Pontoon;
+$a = new Game;
 function displayScores()
 {
     $scores = '';

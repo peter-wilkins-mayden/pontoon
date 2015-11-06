@@ -11,6 +11,10 @@
 class Game
 {
 
-    public $deck = new Deck();
+    public $deck;
+    public function __construct()
+    {
+     $this->deck = new Deck();
+    }
 
 }
