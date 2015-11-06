@@ -29,8 +29,8 @@ class Pontoon
                     $total[0] += $card['name'];
             }
         }
-        echo "\n total: " . $total[0];
-        echo "\n ace: " . $ace . "\n";
+        //echo "\n total: " . $total[0];
+        //echo "\n ace: " . $ace . "\n";
         $total[0] += $ace;
         $var = $total[0];
         while ($ace > 0) {
@@ -97,14 +97,5 @@ class Pontoon
     }
 }
 
-    $hand = [
-        ['suit' => "diamonds", 'name' => "2"],
-        ['suit' => "spades", 'name' => "ace"],
-        ['suit' => "spades", 'name' => "ace"],
-        ['suit' => "spades", 'name' => "ace"],
-        ['suit' => "spades", 'name' => "ace"],
-        ];
-$a = new Pontoon();
-$result = $a->scoreHand($hand);
-var_dump($result);
+
 
