@@ -70,31 +70,7 @@ class Pontoon
         return $hand;
     }
 
-    /**
-     * @return array consisting of 52 shuffled card arrays
-     */
-    public function newShuffledDeck()
-    {
-        $suitee = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'jack', 'queen', 'king', 'ace'];
-        $deck = [
-            'hearts'   => $suitee,
-            'diamonds' => $suitee,
-            'spades'   => $suitee,
-            'clubs'    => $suitee,
-        ];
 
-        foreach ($deck as $suit => $suitee) {
-            foreach ($suitee as $card) {
-                $fullDeck[] = [
-                    'suit' => $suit,
-                    'name' => $card,
-                ];
-            }
-        }
-        shuffle($fullDeck);
-
-        return $fullDeck;
-    }
 }
 
 

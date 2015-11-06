@@ -1,9 +1,14 @@
 <?php
 
-
-class PontoonTest extends PHPUnit_Framework_TestCase
+/**
+ * Project: Pontoon
+ * User: peterwilkins
+ * Date: 06/11/2015
+ * Time: 13:12
+ */
+class HandTest extends PHPUnit_Framework_TestCase
 {
-    /**
+  /**
      * @param $hand
      * @param $expectedResult
      *
@@ -11,7 +16,6 @@ class PontoonTest extends PHPUnit_Framework_TestCase
      */
     public function testHands($hand, $expectedResult)
     {
-        $a = new Pontoon;
         $this->assertEquals($expectedResult, $a->scoreHand($hand));
     }
 
@@ -78,27 +82,14 @@ class PontoonTest extends PHPUnit_Framework_TestCase
         ];
     }
 
-    public function test_create_a_new_pack_of_shuffled_cards()
-    {
-        $a = new Pontoon;
-        $deck = $a->newShuffledDeck();
-        $this->assertEquals(52, count($deck));
-    }
+
 
     public function test_dealCards_returns_number_of_cards_in_argument()
     {
-        $a = new Pontoon;
-        $deck = $a->newShuffledDeck();
-        $hand = $a->dealCards($deck, 2);
+        $game = new Game();
+        $hand = new Hand();
+        $hand->dealCards($game->deck, 2);
         $this->assertEquals(2, count($hand));
-    }
-
-    public function test_dealCards_removes_from_deck_number_of_cards_dealt()
-    {
-        $a = new Pontoon;
-        $deck = $a->newShuffledDeck();
-        $a->dealCards($deck, 10);
-        $this->assertEquals(42, count($deck));
     }
 
 }
