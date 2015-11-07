@@ -23,6 +23,6 @@ class DeckTest extends PHPUnit_Framework_TestCase
     {
         $deck = new Deck();
         $hand = new Hand($deck->dealCards(2));
-        $this->assertEquals(2, count($hand->cards));
+        $this->assertEquals(2, count($hand->getCards()));
     }
 }

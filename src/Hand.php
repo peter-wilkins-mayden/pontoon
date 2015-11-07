@@ -8,7 +8,15 @@
  */
 class Hand
 {
-    public $cards;
+    private $cards;
+
+    /**
+     * @return mixed
+     */
+    public function getCards()
+    {
+        return $this->cards;
+    }
 
     public function __construct($cards)
     {

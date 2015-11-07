@@ -40,8 +40,6 @@ class Deck implements Countable
             $hand[] = array_pop($this->cards);
             $num -= 1;
         }
-
-        //var_dump($hand);
         return $hand;
     }
 
