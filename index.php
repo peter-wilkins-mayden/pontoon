@@ -10,7 +10,11 @@ require_once('play.php');
 <body>
 
 <?php
-echo displayScores();
+$scores = displayScores();
+foreach($scores as $info){
+  echo $info;
+}
+
 ?>
 
 

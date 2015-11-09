@@ -8,6 +8,7 @@
  */
 class Hand
 {
+
     private $cards;
 
     /**
@@ -30,7 +31,7 @@ class Hand
         foreach ($this->cards as $card) {
             switch ($card['name']) {
                 case 'ace':
-                    $ace ++;
+                    $ace++;
                     break;
                 case 'king':
                 case 'queen':
@@ -41,32 +42,21 @@ class Hand
                     $total[0] += $card['name'];
             }
         }
-        //echo "\n total: " . $total[0];
-        //echo "\n ace: " . $ace . "\n";
         $total[0] += $ace;
         $var = $total[0];
-        while ($ace > 0) {
-
+        while ($ace>0) {
             $var += 10;
-            if ($var <= 21) {
+            if ($var<=21) {
                 $total[] = $total[0] + 10;
             }
-
             $ace -= 1;
         }
 
-//    elseif ($ace == 1) {
-//            if ($total <= 10) {
-//                $total += 11;
-//            } else {
-//                $total += 1;
-//            }
-//        }
-        //var_dump($total);
         return $total;
     }
-    public function count(){
+
+    public function count()
+    {
         return count($this->cards);
     }
-
 }

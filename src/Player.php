@@ -8,23 +8,9 @@
  */
 class Player
 {
+
     private $name;
     private $hand;
-    /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->getName();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getHand()
-    {
-        return $this->hand;
-    }
 
     /**
      * Player constructor.
@@ -35,6 +21,35 @@ class Player
     {
         $this->name = $name;
         $this->hand = $hand;
+    }
+
+//    public function playHand(&$deck)
+//    {
+//        $scores = $this->hand->scoreHand();
+//        if ($scores[0]>18) {
+//            return $scores[0];
+//        }
+//        if (($scores[1]) && ($scores[1]>18)) {
+//            return $scores[1];
+//        }
+//        $hand-> $deck->dealCards(1)
+//    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHand()
+    {
+        return $this->hand;
     }
 
 }

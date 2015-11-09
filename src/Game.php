@@ -15,6 +15,17 @@ class Game
     private $deck;
 
     /**
+     * Game constructor.
+     * @param $deck
+     * @param $players
+     */
+    public function __construct($deck, $players)
+    {
+        $this->deck = $deck;
+        $this->players = $players;
+    }
+
+    /**
      * @return mixed
      */
     public function getPlayers()
@@ -28,17 +39,6 @@ class Game
     public function getDeck()
     {
         return $this->deck;
-    }
-
-    /**
-     * Game constructor.
-     * @param $deck
-     * @param $players
-     */
-    public function __construct($deck, $players)
-    {
-        $this->deck = $deck;
-        $this->players = $players;
     }
 
 }

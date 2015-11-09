@@ -9,7 +9,8 @@
 class HandTest extends PHPUnit_Framework_TestCase
 {
   /**
-     * @param $hand
+
+   * @param $hand
      * @param $expectedResult
      *
      * @dataProvider handProvider
