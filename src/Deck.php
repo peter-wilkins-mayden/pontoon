@@ -9,6 +9,22 @@
 class Deck implements Countable
 {
     protected $cards;
+
+    /**
+     * @return array
+     */
+    public function getCards()
+    {
+        return $this->cards;
+    }
+
+    /**
+     * @param array $cards
+     */
+    public function setCards($cards)
+    {
+        $this->cards = $cards;
+    }
     public function __construct($numberDecks = 1)
     {
         $this->cards = $this->makeDeck();
@@ -29,6 +45,10 @@ class Deck implements Countable
             $num -= 1;
         }
         return $hand;
+    }
+    public function hit()
+    {
+        return array_pop($this->cards);
     }
 
 

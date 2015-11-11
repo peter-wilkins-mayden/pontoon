@@ -8,9 +8,9 @@
  */
 class HandTest extends PHPUnit_Framework_TestCase
 {
-  /**
 
-   * @param $hand
+    /**
+     * @param $hand
      * @param $expectedResult
      *
      * @dataProvider handProvider
@@ -81,7 +81,36 @@ class HandTest extends PHPUnit_Framework_TestCase
                 ],
                 [10, 20,],
             ],
+            [
+                [
+                    ['suit' => "diamonds", 'name' => "ace"],
+                    ['suit' => "spades", 'name' => "ace"],
+                    ['suit' => "spades", 'name' => "5"],
+                ],
+                [7, 17],
+            ],
         ];
     }
 
+    public function test_getCards()
+    {
+        $a = new Hand([
+            ['suit' => "diamonds", 'name' => "ace"],
+        ]);
+        $this->assertEquals([
+            ['suit' => "diamonds", 'name' => "ace"],
+        ], $a->getCards());
+    }
+
+    public function test_addCard()
+    {
+        $a = new Hand([
+            ['suit' => "diamonds", 'name' => "ace"],
+        ]);
+        $a->addCard(['suit' => "diamonds", 'name' => "ace"]);
+        $this->assertEquals([
+            ['suit' => "diamonds", 'name' => "ace"],
+            ['suit' => "diamonds", 'name' => "ace"],
+        ], $a->getCards());
+    }
 }

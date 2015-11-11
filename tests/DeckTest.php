@@ -30,4 +30,9 @@ class DeckTest extends PHPUnit_Framework_TestCase
         $hand = new Hand($deck->dealCards(2));
         $this->assertEquals(2, count($hand->getCards()));
     }
+    public function test_hit()
+    {
+        $deck = new Deck();
+        $this->assertEquals(2, count($deck->hit()));
+    }
 }

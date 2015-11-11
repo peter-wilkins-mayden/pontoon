@@ -1,44 +1,99 @@
 <?php
-/**
- * Project: Pontoon
- * User: peterwilkins
- * Date: 06/11/2015
- * Time: 11:50
- */
-
-
 
 class Game
 {
 
-    private $players;
-    private $deck;
+    public $hands;
+    public $accounts;
+    public $players;
+    public $deck;
+    public $dealer;
 
-    /**
-     * Game constructor.
-     * @param $deck
-     * @param $players
-     */
-    public function __construct($deck, $players)
+    public function runGame()
     {
-        $this->deck = $deck;
-        $this->players = $players;
+
+        //while( ! in_array(0, $this->accounts)) {
+         for($i = 0 ; $i <10 ; $i++) {
+            $this->playRound();
+
+        }
+    }
+
+    public function __construct($players, $accountStart, $decks)
+    {
+        $this->deck = new Deck($decks);
+        foreach ($players as $player) {
+            $this->players[$player] = new $player;
+            $this->accounts[$player] = $accountStart;
+        }
+        $this->dealer = new Dealer;
     }
 
     /**
-     * @return mixed
+     * @param $name
      */
-    public function getPlayers()
+    private function dealCards($name)
     {
-        return $this->players;
+        $this->hands[$name] = new Hand($this->deck->dealCards(2));
     }
 
     /**
-     * @return mixed
+     * @param $name
+     * @return bool
      */
-    public function getDeck()
+    private function isNotBust($name)
     {
-        return $this->deck;
+        return min($this->hands[$name]->scoreHand())<=21;
+    }
+    private function isBust($name)
+    {
+        return min($this->hands[$name]->scoreHand())>21;
+    }
+    private function scoreHand($name)
+    {
+        return $this->hands[$name]->scoreHand();
+    }
+    /**
+     * @param $player
+     * @param $name
+     * @return bool
+     */
+    private function twist($player, $name)
+    {
+        return ! $player->stick($this->hands[$name]);
+    }
+
+    public function playRound()
+    {
+        foreach ($this->players as $name => $player) {
+            $this->dealCards($name);
+            $this->accounts[$name] -= 1;
+            while ($this->isNotBust($name) && $this->twist($player, $name)) {
+                $this->hit($name);
+            }
+        }
+        $this->dealCards('Dealer');
+        while ($this->isNotBust('Dealer') && $this->twist($this->dealer, 'Dealer')) {
+            $this->hit('Dealer');
+        }
+        foreach ($this->players as $name => $player) {
+            if ($this->isNotBust($name)){
+                if( $this->isBust('Dealer') ||
+                    $this->scoreHand($name) > $this->scoreHand('Dealer') ||
+                    $this->hands[$name]->count() >= 5) {
+                    $this->accounts[$name] += 2;
+                    echo 'Player: ' . $name . ' has £' . $this->accounts[$name];
+                }
+            }
+        }
+    }
+
+    /**
+     * @param $name
+     */
+    private function hit($name)
+    {
+        $this->hands[$name]->addCard($this->deck->hit());
     }
 
 }

@@ -9,6 +9,9 @@
 class Hand
 {
 
+    /**
+     * @var
+     */
     private $cards;
 
     /**
@@ -18,12 +21,21 @@ class Hand
     {
         return $this->cards;
     }
-
+    public function addCard($newCard){
+        $this->cards[] = $newCard;
+    }
+    /**
+     * Hand constructor.
+     * @param $cards
+     */
     public function __construct($cards)
     {
         $this->cards = $cards;
     }
 
+    /**
+     * @return array  of all possible scores. eg if ace and six in hand returns [7,18]
+     */
     public function scoreHand()
     {
         $total[0] = 0;
@@ -55,6 +67,9 @@ class Hand
         return $total;
     }
 
+    /**
+     * @return int
+     */
     public function count()
     {
         return count($this->cards);
