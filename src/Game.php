@@ -77,12 +77,13 @@ class Game
             $this->hit('Dealer');
         }
         foreach ($this->players as $name => $player) {
+            echo $name . ' has £' . $this->accounts[$name] . "\n";
             if ($this->isNotBust($name)){
                 if( $this->isBust('Dealer') ||
                     $this->scoreHand($name) > $this->scoreHand('Dealer') ||
                     $this->hands[$name]->count() >= 5) {
                     $this->accounts[$name] += 2;
-                    echo 'Player: ' . $name . ' has £' . $this->accounts[$name];
+                    echo $name . ' has £' . $this->accounts[$name] . "\n";
                 }
             }
         }
