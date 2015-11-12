@@ -83,7 +83,6 @@ class Game
                     $this->scoreHand($name) > $this->scoreHand('Dealer') ||
                     $this->hands[$name]->count() >= 5) {
                     $this->accounts[$name] += 2;
-                    echo $name . ' has £' . $this->accounts[$name] . "\n";
                 }
             }
         }

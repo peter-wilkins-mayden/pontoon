@@ -6,13 +6,13 @@
  * Date: 11/11/2015
  * Time: 15:11
  */
-class Peter implements Player
+class Connor implements Player
 {
 
     public function stick(Hand $hand)
     {
         $scores = $hand->scoreHand();
-        if($scores[0] >= 17 || $hand->count() == 5){
+        if($scores[0] >= 19 || $hand->count() == 5){
             return true;
         }
 //        if(count($scores) > 1){  //todo ace in hand
