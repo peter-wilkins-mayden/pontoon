@@ -9,16 +9,6 @@ class Game
     public $deck;
     public $dealer;
 
-    public function runGame()
-    {
-
-        //while( ! in_array(0, $this->accounts)) {
-         for($i = 0 ; $i <10 ; $i++) {
-            $this->playRound();
-
-        }
-    }
-
     public function __construct($players, $accountStart, $decks)
     {
         $this->deck = new Deck($decks);
@@ -27,6 +17,21 @@ class Game
             $this->accounts[$player] = $accountStart;
         }
         $this->dealer = new Dealer;
+    }
+
+    public function runGame($numberRounds)
+    {
+
+        for($i = 0 ; $i < $numberRounds ; $i++) {
+            $this->playRound();
+            if(count($this->deck) < 52){
+                $this->deck = new Deck(4);
+            }
+
+        }
+        foreach ($this->players as $name => $player) {
+            echo $name . ' has £' . $this->accounts[$name] . "\n";
+        }
     }
 
     /**
@@ -77,7 +82,6 @@ class Game
             $this->hit('Dealer');
         }
         foreach ($this->players as $name => $player) {
-            echo $name . ' has £' . $this->accounts[$name] . "\n";
             if ($this->isNotBust($name)){
                 if( $this->isBust('Dealer') ||
                     $this->scoreHand($name) > $this->scoreHand('Dealer') ||
