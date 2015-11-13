@@ -13,5 +13,5 @@ interface Player
      * @param Hand $hand : players current hand
      * @return boolean
      */
-    public function stick(Hand $hand);
+    public function play(Hand $hand);
 }

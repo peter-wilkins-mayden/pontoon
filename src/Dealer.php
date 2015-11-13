@@ -9,7 +9,7 @@
 class Dealer implements Player
 {
 
-    public function stick(Hand $hand)
+    public function play(Hand $hand)
     {
         $scores = $hand->scoreHand();
         if (array_pop($scores)>=17) {

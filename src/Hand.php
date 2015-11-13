@@ -21,9 +21,12 @@ class Hand
     {
         return $this->cards;
     }
-    public function addCard($newCard){
+
+    public function addCard($newCard)
+    {
         $this->cards[] = $newCard;
     }
+
     /**
      * Hand constructor.
      * @param $cards
@@ -38,6 +41,7 @@ class Hand
      */
     public function scoreHand()
     {
+        $flags = ['blackjack' => false, 'bust' => false, 'split' => false,];
         $total[0] = 0;
         $ace = 0;
         foreach ($this->cards as $card) {
@@ -54,7 +58,20 @@ class Hand
                     $total[0] += $card['name'];
             }
         }
+        if (count($this->cards) == 2 &&
+            $ace == 1 &&
+            $total[0] == 10
+        ) {
+            $flags['blackjack'] = true;
+        }
+        if($total[0] > 21){
+            $flags['bust'] = true;
+        }
+        if(count($this->cards) == 2 && $this->cards[0]['name'] == $this->cards[1]['name']){
+            $flags['split'] = true;
+        }
         $total[0] += $ace;
+
         $var = $total[0];
         while ($ace>0) {
             $var += 10;
@@ -64,7 +81,7 @@ class Hand
             $ace -= 1;
         }
 
-        return $total;
+        return array_merge($flags, $total);
     }
 
     /**

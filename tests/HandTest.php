@@ -29,21 +29,21 @@ class HandTest extends PHPUnit_Framework_TestCase
                     ['suit' => "diamonds", 'name' => "2"],
                     ['suit' => "spades", 'name' => "ace"],
                 ],
-                [3, 13,],
+                ['blackjack' => false, 'bust' => false, 'split' => false, 3, 13,],
             ],
             [
                 [
                     ['suit' => "diamonds", 'name' => "ace"],
                     ['suit' => "spades", 'name' => "ace"],
                 ],
-                [2, 12,],
+                ['blackjack' => false, 'bust' => false, 'split' => true, 2, 12,],
             ],
             [
                 [
                     ['suit' => "diamonds", 'name' => "king"],
                     ['suit' => "spades", 'name' => "ace"],
                 ],
-                [11, 21,],
+                ['blackjack' => true, 'bust' => false, 'split' => false, 11, 21,],
             ],
             [
                 [
@@ -53,7 +53,7 @@ class HandTest extends PHPUnit_Framework_TestCase
                     ['suit' => "spades", 'name' => "ace"],
                     ['suit' => "spades", 'name' => "ace"],
                 ],
-                [6, 16,],
+                ['blackjack' => false, 'bust' => false, 'split' => false, 6, 16,],
             ],
             [
                 [
@@ -63,7 +63,7 @@ class HandTest extends PHPUnit_Framework_TestCase
                     ['suit' => "spades", 'name' => "5"],
                     ['suit' => "spades", 'name' => "ace"],
                 ],
-                [21,],
+                ['blackjack' => false, 'bust' => false, 'split' => false, 21,],
             ],
             [
                 [
@@ -71,7 +71,7 @@ class HandTest extends PHPUnit_Framework_TestCase
                     ['suit' => "spades", 'name' => "ace"],
                     ['suit' => "spades", 'name' => "ace"],
                 ],
-                [11, 21,],
+                ['blackjack' => false, 'bust' => false, 'split' => false, 11, 21,],
             ],
             [
                 [
@@ -79,7 +79,7 @@ class HandTest extends PHPUnit_Framework_TestCase
                     ['suit' => "spades", 'name' => "ace"],
                     ['suit' => "spades", 'name' => "ace"],
                 ],
-                [10, 20,],
+                ['blackjack' => false, 'bust' => false, 'split' => false, 10, 20,],
             ],
             [
                 [
@@ -87,7 +87,7 @@ class HandTest extends PHPUnit_Framework_TestCase
                     ['suit' => "spades", 'name' => "ace"],
                     ['suit' => "spades", 'name' => "5"],
                 ],
-                [7, 17],
+                ['blackjack' => false, 'bust' => false, 'split' => false, 7, 17],
             ],
         ];
     }

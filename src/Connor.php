@@ -9,7 +9,7 @@
 class Connor implements Player
 {
 
-    public function stick(Hand $hand)
+    public function play(Hand $hand)
     {
         $scores = $hand->scoreHand();
         if($scores[0] >= 19 || $hand->count() == 5){

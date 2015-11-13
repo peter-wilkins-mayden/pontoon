@@ -8,12 +8,14 @@
  */
 class Peter implements Player
 {
-
-    public function stick(Hand $hand)
+//['blackjack' => false, 'bust' => false, 'split' => false,]
+    public function play(Hand $hand)
     {
         $scores = $hand->scoreHand();
-        if($scores[0] >= 17 || $hand->count() == 5){
-            return true;
+
+
+        if($scores['blackjack'] || $scores['bust'] || $scores['0'] >= 17 || $hand->count() == 5){
+            return 0;
         }
 //        if(count($scores) > 1){  //todo ace in hand
 //            if($scores[0] <= 10){
@@ -21,7 +23,7 @@ class Peter implements Player
 //            }
 //        }
 
-        return false;
+        return 1;
 
     }
 }

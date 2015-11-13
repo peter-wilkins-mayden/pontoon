@@ -16,7 +16,7 @@ class DealerTest extends PHPUnit_Framework_TestCase
             ['suit' => "spades", 'name' => "8"],
         ]);
         $dealer = new Dealer();
-        $this->assertEquals(true, $dealer->stick($hand));
+        $this->assertEquals(true, $dealer->play($hand));
     }
 
     public function test_dealer_twists_on_16()
@@ -26,7 +26,7 @@ class DealerTest extends PHPUnit_Framework_TestCase
             ['suit' => "spades", 'name' => "8"],
         ]);
         $dealer = new Dealer();
-        $this->assertEquals(false, $dealer->stick($hand));
+        $this->assertEquals(false, $dealer->play($hand));
     }
     public function test_dealer_sticks_on_17_with_ace()
     {
@@ -35,7 +35,7 @@ class DealerTest extends PHPUnit_Framework_TestCase
             ['suit' => "spades", 'name' => "6"],
         ]);
         $dealer = new Dealer();
-        $this->assertEquals(true, $dealer->stick($hand));
+        $this->assertEquals(true, $dealer->play($hand));
     }
     public function test_dealer_twists_on_16_with_ace()
     {
@@ -44,7 +44,7 @@ class DealerTest extends PHPUnit_Framework_TestCase
             ['suit' => "spades", 'name' => "5"],
         ]);
         $dealer = new Dealer();
-        $this->assertEquals(false, $dealer->stick($hand));
+        $this->assertEquals(false, $dealer->play($hand));
     }
     public function test_dealer_twists_with_2_aces()
     {
@@ -53,7 +53,7 @@ class DealerTest extends PHPUnit_Framework_TestCase
             ['suit' => "spades", 'name' => "ace"],
         ]);
         $dealer = new Dealer();
-        $this->assertEquals(false, $dealer->stick($hand));
+        $this->assertEquals(false, $dealer->play($hand));
     }
     public function test_dealer_sticks_with_2_aces_and_5()
     {
@@ -63,7 +63,7 @@ class DealerTest extends PHPUnit_Framework_TestCase
             ['suit' => "spades", 'name' => "5"],
         ]);
         $dealer = new Dealer();
-        $this->assertEquals(true, $dealer->stick($hand));
+        $this->assertEquals(true, $dealer->play($hand));
     }
 
 
